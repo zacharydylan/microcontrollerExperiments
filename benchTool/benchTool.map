@@ -17,6 +17,8 @@ Discarded input sections
  .text          0x0000000000000000        0x0 ../AVR-Programming-Library/a4988.o
  .data          0x0000000000000000        0x0 ../AVR-Programming-Library/a4988.o
  .bss           0x0000000000000000        0x0 ../AVR-Programming-Library/a4988.o
+ .text.stopPulse
+                0x0000000000000000        0x4 ../AVR-Programming-Library/a4988.o
  .text          0x0000000000000000        0x0 ../AVR-Programming-Library/USART.o
  .data          0x0000000000000000        0x0 ../AVR-Programming-Library/USART.o
  .bss           0x0000000000000000        0x0 ../AVR-Programming-Library/USART.o
@@ -216,7 +218,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0x174
+.text           0x0000000000000000      0x176
  *(.vectors)
  .vectors       0x0000000000000000       0x68 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/crtatmega168p.o
                 0x0000000000000000                __vectors
@@ -301,23 +303,20 @@ END GROUP
                 0x0000000000000080       0x76 benchTool.o
                 0x0000000000000080                main
  .text.initStepper
-                0x00000000000000f6        0x8 ../AVR-Programming-Library/a4988.o
+                0x00000000000000f6        0xa ../AVR-Programming-Library/a4988.o
                 0x00000000000000f6                initStepper
- .text.pulseC   0x00000000000000fe       0x26 ../AVR-Programming-Library/a4988.o
-                0x00000000000000fe                pulseC
- .text.pulseCC  0x0000000000000124       0x26 ../AVR-Programming-Library/a4988.o
-                0x0000000000000124                pulseCC
- .text.stopPulse
-                0x000000000000014a        0x4 ../AVR-Programming-Library/a4988.o
-                0x000000000000014a                stopPulse
+ .text.pulseC   0x0000000000000100       0x28 ../AVR-Programming-Library/a4988.o
+                0x0000000000000100                pulseC
+ .text.pulseCC  0x0000000000000128       0x28 ../AVR-Programming-Library/a4988.o
+                0x0000000000000128                pulseCC
  .text.initUSART
-                0x000000000000014e       0x22 ../AVR-Programming-Library/USART.o
-                0x000000000000014e                initUSART
-                0x0000000000000170                . = ALIGN (0x2)
+                0x0000000000000150       0x22 ../AVR-Programming-Library/USART.o
+                0x0000000000000150                initUSART
+                0x0000000000000172                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000000000000170        0x0 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_exit.o)
-                0x0000000000000170                exit
-                0x0000000000000170                _exit
+ .fini9         0x0000000000000172        0x0 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_exit.o)
+                0x0000000000000172                exit
+                0x0000000000000172                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -336,11 +335,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000000000000170        0x4 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_exit.o)
+ .fini0         0x0000000000000172        0x4 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_exit.o)
  *(.fini0)
-                0x0000000000000174                _etext = .
+                0x0000000000000176                _etext = .
 
-.data           0x0000000000800100        0x0 load address 0x0000000000000174
+.data           0x0000000000800100        0x0 load address 0x0000000000000176
                 0x0000000000800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -357,8 +356,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 0x0000000000800100                PROVIDE (__bss_end, .)
-                0x0000000000000174                __data_load_start = LOADADDR (.data)
-                0x0000000000000174                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000000000000176                __data_load_start = LOADADDR (.data)
+                0x0000000000000176                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0000000000800060        0x0
                 0x0000000000800060                PROVIDE (__noinit_start, .)
@@ -386,17 +385,17 @@ END GROUP
 .user_signatures
  *(.user_signatures*)
 
-.stab           0x0000000000000000      0xea0
+.stab           0x0000000000000000      0xe4c
  *(.stab)
- .stab          0x0000000000000000      0x5a0 benchTool.o
- .stab          0x00000000000005a0      0x564 ../AVR-Programming-Library/a4988.o
-                                        0x72c (size before relaxing)
- .stab          0x0000000000000b04      0x39c ../AVR-Programming-Library/USART.o
+ .stab          0x0000000000000000      0x594 benchTool.o
+ .stab          0x0000000000000594      0x51c ../AVR-Programming-Library/a4988.o
+                                        0x720 (size before relaxing)
+ .stab          0x0000000000000ab0      0x39c ../AVR-Programming-Library/USART.o
                                         0xaa4 (size before relaxing)
 
-.stabstr        0x0000000000000000     0x105c
+.stabstr        0x0000000000000000     0x109a
  *(.stabstr)
- .stabstr       0x0000000000000000     0x105c benchTool.o
+ .stabstr       0x0000000000000000     0x109a benchTool.o
 
 .stab.excl
  *(.stab.excl)

@@ -27,7 +27,6 @@ int main(void) {
   initUSART();
   initADC0();
   initStepper();
-  stopPulse();
 
   // ------ Event loop ------ //
   while (1) {
@@ -35,13 +34,13 @@ int main(void) {
     ADCSRA |= (1 << ADSC);                     /* start ADC conversion */
     loop_until_bit_is_clear(ADCSRA, ADSC);          /* wait until done */
     adcValue = ADCH;                                     /* read ADC in */
-    if(bit_is_clear(PINB, cB)){
+    while(bit_is_clear(PINB, cB)){
 	  pulseC(200);
 	}
-    if(bit_is_clear(PINB, ccB)){
+    while(bit_is_clear(PINB, ccB)){
 	  pulseCC(200);
 	}
-    _delay_ms(50);
+    _delay_ms(15);
   }                                                  /* End event loop */
   return 0;                            /* This line is never reached */
 }
